@@ -19,7 +19,7 @@ const SeatChooser = ({ chosenDay, chosenSeat, updateSeat }) => {
     return () => {
       clearInterval(loadRepeat);
     };
-  });
+  },[]);
 
 
   const isTaken = (seatId) => {
