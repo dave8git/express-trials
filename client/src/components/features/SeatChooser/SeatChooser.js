@@ -13,6 +13,9 @@ const SeatChooser = ({ chosenDay, chosenSeat, updateSeat }) => {
     dispatch(loadSeatsRequest());
   }, [dispatch])
 
+  useEffect(() => {
+    
+  })
   const isTaken = (seatId) => {
     return (seats.some(item => (item.seat === seatId && item.day === chosenDay)));
   }
