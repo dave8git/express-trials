@@ -10,14 +10,14 @@ const SeatChooser = ({ chosenDay, chosenSeat, updateSeat }) => {
   const requests = useSelector(getRequests);
   
   useEffect(() => {
-    dispatch(() => loadSeatsRequest());
+    dispatch(loadSeatsRequest());
   }, [dispatch])
 
   useEffect(() => {
-    const loadRepeat = setInterval(() => dispatch(loadSeatsRequest()), 2000);
+    //const loadRepeat = setInterval(() => dispatch(loadSeatsRequest()), 2000);
 
     return () => {
-      clearInterval(loadRepeat);
+      //clearInterval(loadRepeat);
     };
   },[]);
 

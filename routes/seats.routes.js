@@ -12,8 +12,16 @@ router.route('/seats/:id').get((req, res) => {
 router.route('/seats').post((req, res) => {
     const answer = { id: randGen(), day: req.body.day, seat: req.body.seat, client: req.body.client, email: req.body.email };
     console.log(answer);
-    seats.push(answer);
-    res.json({ message: 'OK' });
+    const id = randGen();
+    const {day, seat, client, email} = req.body;
+    const isTaken = db.seats.some((savedSeat) => ((day == savedSeat.day) && (seat == savedSeat.seat)) ? true : false);
+    if(isTaken){
+        res.json({ message: 'This seat is already taken'});
+    } else {
+        db.seats.push(answer);
+        res.json({ message: 'OK' });
+    }
+    
 });
 router.route('/seats/:id').delete((req, res) => {
     db.seats = db.seats.filter(el => el.id != req.params.id);
